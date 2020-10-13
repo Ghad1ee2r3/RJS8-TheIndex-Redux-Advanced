@@ -4,6 +4,8 @@ import React, { useState } from "react";
 import AuthorCard from "./AuthorCard";
 import SearchBar from "./SearchBar";
 
+import {connect} from "react-redux";
+
 const AuthorsList = props => {
   const [query, setQuery] = useState("");
 
@@ -28,4 +30,11 @@ const AuthorsList = props => {
   );
 };
 
-export default AuthorsList;
+const mapStateToProps = (state) => {
+  return {
+    authors: state.authors.authors,
+  };
+};
+
+export default connect(mapStateToProps)(AuthorsList);
+
